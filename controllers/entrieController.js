@@ -1,4 +1,4 @@
-const { getAllEntries, getAllEntriesByEmail, getById, postEntries, putEntries, deleteOne } = require('../models/entriesmodel');
+const { getAllEntries, getAllEntriesByEmail, getById, postEntries, putEntries, deleteOne } = require('../models/entriesModel');
 
 
 
@@ -6,15 +6,12 @@ const cogerEntries = async (req, res) => {
       
     let data;
     try {
-        const { email, id_entry } = req.body;
+        const { email } = req.body;
         
         if (email) {
             data = await getAllEntriesByEmail(email);
 
-        } else if (id_entry) {
-            data = await getById(id_entry)
-
-        } else {
+        }  else {
             data = await getAllEntries();
 
         }
@@ -36,7 +33,7 @@ const cogerEntries = async (req, res) => {
 
 
 const crearEntries = async (req, res) => {
-    let data;
+    
     try {
         const { id_author, title, content, category } = req.body;
 
@@ -47,7 +44,7 @@ const crearEntries = async (req, res) => {
             });
         }
 
-        data = await postEntries(title, content, id_author, category);
+     const   data = await postEntries(title, content, id_author, category);
 
         if (data) {
             res.status(200).json({
@@ -70,9 +67,10 @@ const crearEntries = async (req, res) => {
 
 
 const actualizarEntries = async (req, res) => {
-    let data;
+   
+    console.log(req.params.id_entry)
     try {
-        const id_entry = req.params.id_entry; 
+        const { id_entry } = req.params; 
         const { title, content } = req.body; 
 
         
@@ -85,7 +83,7 @@ const actualizarEntries = async (req, res) => {
 
         
         const originalData = await getById(id_entry);
-
+        console.log(title, originalData.title)
         
         if (title === originalData.title && content === originalData.content) {
             return res.status(200).json({
@@ -93,7 +91,7 @@ const actualizarEntries = async (req, res) => {
                 msg: 'noticia actualizada.',
             });
         }
-
+        
        
         data = await putEntries(title, content, id_entry);
 

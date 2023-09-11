@@ -1,4 +1,4 @@
-const querieEntries = require('./queries.js')
+const {querieEntries} = require('./queries')
 const {pool} = require('../utils/connectPool')
 
 
@@ -46,13 +46,13 @@ const getAllEntriesByEmail= async (email)=> {
       const data = await client.query(querieEntries.byId, [id_entry]);
   
       if (data.rows.length === 0) {
-        throw new Error('Ese IID parece no existir');
+        throw new Error('No se encontró la  ID ');
       }
   
       result = await data.rows[0];
     } catch (error) {
       console.error(error);
-      throw new Error('Error al buscar ID');
+      throw new Error('Error al buscar la  ID');
     } finally {
       client.release();
     }
@@ -90,6 +90,7 @@ const putEntries = async (title, content, id_entry) => {
     client = await pool.connect();
     const data = await client.query(querieEntries.byActualizar, [title, content, id_entry]);
     result = data.rows[0]; 
+    console.log(result)
   } catch (error) {
     console.error(error);
     throw new Error('Error al actualizar la entrada');
@@ -97,6 +98,7 @@ const putEntries = async (title, content, id_entry) => {
     client.release();
   }
   return result;
+
 };
 
 
