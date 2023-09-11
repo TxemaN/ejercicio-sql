@@ -5,15 +5,15 @@ const {getAllAuthors,createAuthor, updateAuthorById, deleteAuthorById}  = requir
 
 
 //get all 
- router.get('/',getAllAuthors);
+ router.get("/",getAllAuthors);
 
 
  //post create
-router.post('/',createAuthor);
+router.post("/",createAuthor);
 
 //uptade
 
-router.put('/:id_author', updateAuthorById );
+router.put("/:id_author", updateAuthorById );
 
 //delete
 router.delete("/:id_author", deleteAuthorById)

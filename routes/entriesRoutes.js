@@ -7,13 +7,13 @@ const {cogerEntries, crearEntries, actualizarEntries, borrarUna} = require("../c
 router.get("/",cogerEntries)
 
 
-router.post('/',crearEntries)
+router.post("/",crearEntries)
 
 
 
-router.put('/update/:id_entry',actualizarEntries)
+router.put("/update/:id_entry",actualizarEntries)
 
 
-router.delete('/:id_entry', borrarUna)
+router.delete("/:id_entry", borrarUna)
 
 module.exports = router

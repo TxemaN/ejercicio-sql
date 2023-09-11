@@ -49,7 +49,7 @@ const crearEntries = async (req, res) => {
         if (data) {
             res.status(200).json({
                 ok: true,
-                msg: 'Entrada creada',
+                msg: "Entrada creada",
                 data
             });
         } else {
@@ -59,7 +59,7 @@ const crearEntries = async (req, res) => {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'No está creando la query'
+            msg: "No está creando la query"
         });
     }
 };
@@ -77,7 +77,7 @@ const actualizarEntries = async (req, res) => {
         if (!title || !content) {
             return res.status(400).json({
                 ok: false,
-                msg: ' título  obligatorio',
+                msg: "título  obligatorio",
             });
         }
 
@@ -88,7 +88,7 @@ const actualizarEntries = async (req, res) => {
         if (title === originalData.title && content === originalData.content) {
             return res.status(200).json({
                 ok: true,
-                msg: 'noticia actualizada.',
+                msg: "noticia actualizada.",
             });
         }
         
@@ -100,14 +100,14 @@ const actualizarEntries = async (req, res) => {
 
         res.status(200).json({
             ok: true,
-            msg: 'Noticia actualizada ',
+            msg: "Noticia actualizada",
             data: updatedData, 
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
             ok: false,
-            msg: 'no pilla la query'
+            msg: "no pilla la query"
         });
     }
 };

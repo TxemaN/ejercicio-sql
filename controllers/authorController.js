@@ -20,7 +20,7 @@ const {Todas, Nombre, Email, Crear, Actualizar, Borrar} = require('../models/aut
         if (authors.length === 0) {
           return res.status(404).json({
             ok: false,
-            msg: 'Nenhum autor encontrado.',
+            msg: "Nose han encontrado autores",
           });
         }
     
@@ -32,7 +32,7 @@ const {Todas, Nombre, Email, Crear, Actualizar, Borrar} = require('../models/aut
         console.error(error);
         res.status(500).json({
           ok: false,
-          msg: 'Contacte el adm',
+          msg: "Contactar con el admin",
         });
       }
     };
@@ -45,14 +45,14 @@ const {Todas, Nombre, Email, Crear, Actualizar, Borrar} = require('../models/aut
   
       res.status(201).json({
         ok: true,
-        msg: 'Autor creado ',
+        msg: 'Autor creado',
         data: await author,
       });
     } catch (error) {
       console.error(error);
       res.status(500).json({
         ok: false,
-        msg: 'No es posible crear el autor'
+        msg: "No es posible crear el autor"
       });
     }
   };
@@ -66,20 +66,20 @@ const {Todas, Nombre, Email, Crear, Actualizar, Borrar} = require('../models/aut
       if (author) {
         res.status(200).json({
           ok: true,
-          msg: 'Autor actualizado',
+          msg: "Autor actualizado",
           data: author,
         });
       } else {
         res.status(404).json({
           ok: false,
-          msg: 'autor no existe',
+          msg: "autor no existe",
         });
       }
     } catch (error) {
       console.error(error);
       res.status(500).json({
         ok: false,
-        msg: 'Contacte el adm'
+        msg: "Contacte con el administrador"
       });
     }
   };
@@ -90,13 +90,13 @@ const {Todas, Nombre, Email, Crear, Actualizar, Borrar} = require('../models/aut
       await Borrar(id_author);
       res.status(200).json({
         ok: true,
-        msg: 'Autor eliminado',
+        msg: "Autor eliminado",
       });
     } catch (error) {
       console.error(error);
       res.status(500).json({
         ok: false,
-        msg: 'Contacte el adm'
+        msg: "Contacte con el administrador"
       });
     }
   };

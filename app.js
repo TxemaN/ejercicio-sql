@@ -21,5 +21,5 @@ app.use('/api/v1/blog/autor', require('./routes/authorRoutes') )
 
 
 app.listen(port, () => {
-    console.log(`Servidor ON en ${port}`)
+    console.log(`Servidor activo en puerto ${port}`)
 })

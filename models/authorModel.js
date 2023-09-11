@@ -10,7 +10,7 @@ const Todas = async () => {
         result = data.rows;
     } catch (error) {
         console.error(error);
-        throw new Error('Error a mostrar los autores');
+        throw new Error("Error al mostrar los autores");
     } finally {
         client.release();
     }
@@ -27,7 +27,7 @@ const Email = async (email) => {
         result = data.rows;
     } catch (error) {
         console.error(error);
-        throw new Error('Error a buscar por email');
+        throw new Error("Error al buscar correo");
     } finally {
         client.release();
     }
@@ -46,7 +46,7 @@ const Nombre = async (name) => {
       
     } catch (error) {
         console.error(error);
-        throw new Error('Error a buscar por nombre');
+        throw new Error("Error al buscar por nombre");
     } finally {
         client.release();
     }
@@ -62,7 +62,7 @@ const Crear = async (name, surname, email, image) => {
         result = await data.rows[0];
     } catch (error) {
         console.error(error);
-        throw new Error('Error al crear el autor');
+        throw new Error("Error al crear autor");
     } finally {
         client.release();
     }
@@ -82,7 +82,7 @@ const Actualizar = async (id_author, name, surname, email, image) => {
         result = data.rows[0];
     } catch (error) {
         console.error(error);
-        throw new Error('Error al actualizar el autor por ID');
+        throw new Error("Error al actualizar por ID");
     } finally {
         client.release();
     }
@@ -97,7 +97,7 @@ const Borrar = async (id_author) => {
         await client.query(querieAuthors.byDeletar, [id_author]);
     } catch (error) {
         console.error(error);
-        throw new Error('Error al eliminar el autor por ID');
+        throw new Error("Error al eliminar por ID");
     } finally {
         client.release();
     }
